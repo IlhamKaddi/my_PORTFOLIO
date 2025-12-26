@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <header className="bg-black">
-      <div className="flex items-center justify-between px-6 py-5">
+      <div className="flex items-center justify-between px-12 py-5">
 
         {/* Logo */}
         <div className=" tracking-wide">
