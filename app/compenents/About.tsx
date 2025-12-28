@@ -113,7 +113,7 @@ const About = () => {
   return (
     <section
       ref={ref}
-      className="min-h-screen bg-black py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className=" bg-black py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       style={{
         backgroundImage: `
           linear-gradient(rgba(248, 92, 112, 0.05) 1px, transparent 1px),
