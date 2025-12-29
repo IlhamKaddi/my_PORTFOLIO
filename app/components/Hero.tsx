@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Mail, Github, Linkedin, ArrowDown, Code2, Sparkles } from 'lucide-react';
+import { Mail, Github, Linkedin, Code2, Sparkles } from 'lucide-react';
 import { motion, useMotionValue, useTransform, useSpring, type Variants } from "framer-motion";
 
 interface MousePosition {
@@ -13,14 +13,6 @@ interface Skill {
   delay: number;
 }
 
-interface FloatingElement {
-  code: string;
-  top?: string;
-  left?: string;
-  right?: string;
-  bottom?: string;
-}
-
 interface Particle {
   id: number;
   left: string;
@@ -29,7 +21,6 @@ interface Particle {
   delay: number;
 }
 
-
 const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
   const [windowSize, setWindowSize] = useState(() => ({
@@ -37,10 +28,7 @@ const Hero: React.FC = () => {
     height: typeof window !== "undefined" ? window.innerHeight : 0,
   }));
 
-
   useEffect(() => {
-
-
     const handleMouseMove = (e: MouseEvent): void => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -84,18 +72,6 @@ const Hero: React.FC = () => {
     },
   };
 
-  const floatingVariants: Variants = {
-    initial: { y: 0 },
-    animate: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   const skills: Skill[] = [
     { name: "React", delay: 0 },
     { name: "TypeScript", delay: 0.2 },
@@ -104,7 +80,7 @@ const Hero: React.FC = () => {
     { name: "Framer Motion", delay: 0.8 },
   ];
 
-  // Motion values for 3D effect
+  // Motion values for 3D effect (currently not used for image)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -126,7 +102,7 @@ const Hero: React.FC = () => {
       mouseY.set((mousePosition.y - windowSize.height / 2) / 20);
     }
   }, [mousePosition, windowSize, mouseX, mouseY]);
-  // 
+
   const [particles] = useState<Particle[]>(() =>
     Array.from({ length: 20 }, (_, i) => ({
       id: i,
@@ -137,16 +113,18 @@ const Hero: React.FC = () => {
     }))
   );
 
-
   return (
-    <div className="relative  bg-black overflow-hidden py-8">
+    <div className="relative bg-black overflow-hidden py-8">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(248, 92, 112, 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(248, 92, 112, 0.1) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(rgba(248, 92, 112, 0.1) 1px, transparent 1px),
+                             linear-gradient(90deg, rgba(248, 92, 112, 0.1) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px',
+          }}
+        />
       </div>
 
       {/* Gradient Orbs */}
@@ -182,24 +160,13 @@ const Hero: React.FC = () => {
         <motion.div
           key={p.id}
           className="absolute w-1 h-1 bg-white rounded-full"
-          style={{
-            left: p.left,
-            top: p.top,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: p.duration,
-            repeat: Infinity,
-            delay: p.delay,
-          }}
+          style={{ left: p.left, top: p.top }}
+          animate={{ y: [0, -30, 0], opacity: [0.2, 0.5, 0.2] }}
+          transition={{ duration: p.duration, repeat: Infinity, delay: p.delay }}
         />
       ))}
 
-
-      <div className="relative container mx-auto px-6 md:px-14 py-12 flex items-center ">
+      <div className="relative container mx-auto px-6 md:px-14 py-12 flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left Content */}
           <motion.div
@@ -242,7 +209,7 @@ const Hero: React.FC = () => {
 
             {/* Skills Pills */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
-              {skills.map((skill, index) => (
+              {skills.map((skill) => (
                 <motion.span
                   key={skill.name}
                   className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white/70 text-sm backdrop-blur-sm"
@@ -301,58 +268,16 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - 3D Card */}
-          <motion.div
-            className="relative hidden lg:flex justify-center items-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            <motion.div
-              className="relative w-[400px] h-[500px]"
-              style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-              }}
-            >
-              {/* Main Card */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-[#f85c70]/20 to-purple-500/20 rounded-3xl backdrop-blur-xl border border-white/10"
-                variants={floatingVariants}
-                initial="initial"
-                animate="animate"
-              >
-                {/* Profile Image Placeholder */}
-                <div className="absolute inset-8 rounded-2xl bg-gradient-to-br from-[#f85c70] to-purple-500 flex items-center justify-center overflow-hidden">
-                  <motion.div
-                    className="text-white text-6xl font-bold"
-                    animate={{ rotate: [0, 5, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
-                    ILHAME <br />
-                     KADDI
-                  </motion.div>
-                </div>
-
-                {/* Decorative Elements */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-24 h-24 bg-[#f85c70] rounded-full blur-xl"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <motion.div
-                  className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500 rounded-full blur-xl"
-                  animate={{ scale: [1, 1.3, 1] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
-              </motion.div>
-
-            </motion.div>
-          </motion.div>
+          {/* Right Content - Profile Image */}
+          <div className="relative flex justify-end items-center">
+            <img
+              src="/profile (2).png"
+              alt="Profile"
+              className="w-[400px] h-auto rounded-2xl object-cover  -mt-32 "
+            />
+          </div>
         </div>
       </div>
-
     </div>
   );
 };
