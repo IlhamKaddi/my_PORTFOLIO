@@ -15,7 +15,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className=" tracking-wide">
             
-          <Image src="/I__1_-removebg-preview.png" alt="Logo" width={80} height={80} />
+          <Image src="/logoo-removebg-preview.png" alt="Logo" width={150} height={150} />
         </div>
 
         {/* Desktop Nav */}

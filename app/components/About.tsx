@@ -113,7 +113,7 @@ const About = () => {
   return (
     <section
       ref={ref}
-      className=" bg-black py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className=" bg-black py-8 md:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       style={{
         backgroundImage: `
           linear-gradient(rgba(248, 92, 112, 0.05) 1px, transparent 1px),
@@ -169,15 +169,13 @@ const About = () => {
               </span>
             </motion.div>
 
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+            <h2 className="text-3xl sm:text-6xl lg:text-7xl font-bold leading-tight">
               <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
                 Hi, I m a Front-End Developer
               </span>
               <span
-                className="block mt-2 bg-clip-text text-transparent"
-                style={{
-                  backgroundImage: "linear-gradient(to right, #f85c70, #ff7a8a, #f85c70)",
-                }}
+                className="block mt-2 block bg-gradient-to-r from-[#f85c70] to-purple-500 bg-clip-text text-transparent"
+              
               >
                 Who Loves to Create
               </span>

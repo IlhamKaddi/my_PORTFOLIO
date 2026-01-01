@@ -102,7 +102,7 @@ export default function Projects() {
             : PROJECTS.filter((project) => project.category === filter);
 
     return (
-        <section className="min-h-screen bg-black text-white py-20 px-12"   
+        <section className="min-h-screen bg-black text-white py-20 px-6"   
         style={{
         backgroundImage: `
           linear-gradient(rgba(244,114,182,0.05) 1px, transparent 1px),

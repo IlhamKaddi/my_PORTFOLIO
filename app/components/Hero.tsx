@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { Mail, Github, Linkedin, Code2, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Mail, Github, Linkedin, Code2, Sparkles } from "lucide-react";
 import { motion, useMotionValue, useTransform, useSpring, type Variants } from "framer-motion";
 
 interface MousePosition {
@@ -29,23 +29,23 @@ const Hero: React.FC = () => {
   }));
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent): void => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    const handleResize = (): void => {
+    const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -80,7 +80,6 @@ const Hero: React.FC = () => {
     { name: "Framer Motion", delay: 0.8 },
   ];
 
-  // Motion values for 3D effect (currently not used for image)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -116,43 +115,27 @@ const Hero: React.FC = () => {
   return (
     <div className="relative bg-black overflow-hidden py-8">
       {/* Animated Background Grid */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 hidden md:block">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage: `linear-gradient(rgba(248, 92, 112, 0.1) 1px, transparent 1px),
-                             linear-gradient(90deg, rgba(248, 92, 112, 0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
+                              linear-gradient(90deg, rgba(248, 92, 112, 0.1) 1px, transparent 1px)`,
+            backgroundSize: "50px 50px",
           }}
         />
       </div>
 
       {/* Gradient Orbs */}
       <motion.div
-        className="absolute top-20 left-20 w-96 h-96 bg-[#f85c70] rounded-full filter blur-[120px] opacity-20"
-        animate={{
-          x: [0, 50, 0],
-          y: [0, 30, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        className="absolute top-20 left-20 w-96 h-96 bg-[#f85c70] rounded-full filter blur-[120px] opacity-20 hidden md:block"
+        animate={{ x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500 rounded-full filter blur-[120px] opacity-20"
-        animate={{
-          x: [0, -50, 0],
-          y: [0, -30, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500 rounded-full filter blur-[120px] opacity-20 hidden md:block"
+        animate={{ x: [0, -50, 0], y: [0, -30, 0], scale: [1, 1.2, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Floating Particles */}
@@ -166,11 +149,11 @@ const Hero: React.FC = () => {
         />
       ))}
 
-      <div className="relative container mx-auto px-6 md:px-14 py-12 flex items-center">
-        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+      <div className="relative container mx-auto px-6 md:px-14 py-2 md:py-12 flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left Content */}
           <motion.div
-            className="space-y-8 z-10"
+            className="space-y-6 md:space-y-8 z-10 order-2 lg:order-1"
             variants={containerVariants}
             initial="hidden"
             animate="show"
@@ -187,11 +170,11 @@ const Hero: React.FC = () => {
             </motion.div>
 
             {/* Main Heading */}
-            <motion.div variants={itemVariants} className="space-y-3">
-              <p className="text-white/60 text-lg font-medium">
+            <motion.div variants={itemVariants} className="space-y-2 sm:space-y-3">
+              <p className="text-white/60 text-base sm:text-lg font-medium">
                 Hey, I am <span className="text-[#ebb1b9] font-bold">ILHAME KADDI</span>
               </p>
-              <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white leading-tight">
                 <span className="block">Creative</span>
                 <span className="block bg-gradient-to-r from-[#f85c70] to-purple-500 bg-clip-text text-transparent">
                   Web Developer
@@ -202,7 +185,7 @@ const Hero: React.FC = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-gray-400 text-lg max-w-md leading-relaxed"
+              className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md leading-relaxed"
             >
               Crafting beautiful, responsive, and interactive web experiences with modern technologies and pixel-perfect animations.
             </motion.p>
@@ -228,7 +211,10 @@ const Hero: React.FC = () => {
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div variants={itemVariants} className="flex gap-4 items-center">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-4 items-center mt-4"
+            >
               <motion.button
                 className="bg-[#f85c70] hover:bg-[#ff5269] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#f85c70]/50 relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
@@ -237,8 +223,8 @@ const Hero: React.FC = () => {
                 <span className="relative z-10">Hire me</span>
                 <motion.div
                   className="absolute inset-0 bg-white/20"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '100%' }}
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
                   transition={{ duration: 0.5 }}
                 />
               </motion.button>
@@ -252,7 +238,7 @@ const Hero: React.FC = () => {
               </motion.button>
 
               {/* Social Icons */}
-              <div className="flex gap-3 ml-2">
+              <div className="flex gap-3 ml-0 sm:ml-2">
                 {[Github, Linkedin, Code2].map((Icon, index) => (
                   <motion.a
                     key={index}
@@ -269,11 +255,11 @@ const Hero: React.FC = () => {
           </motion.div>
 
           {/* Right Content - Profile Image */}
-          <div className="relative flex justify-end items-center">
+          <div className="relative flex justify-center lg:justify-end items-center order-1 lg:order-2">
             <img
               src="/profile (2).png"
               alt="Profile"
-              className="w-[400px] h-auto rounded-2xl object-cover  -mt-32 "
+              className="w-full max-w-[350px] md:max-w-[400px] h-auto rounded-2xl object-cover -mt-16 md:-mt-32"
             />
           </div>
         </div>
