@@ -33,7 +33,7 @@ const PROJECTS: Project[] = [
         title: "Aluminium & Glass Website",
         description: "Business website for aluminium and glass services.",
         image: "/projects/alum-p.png",
-        tech: ["React", "Tailwind CSS", "Framer Motion"],
+        tech: ["Next.js", "Typescript","Tailwind CSS", "Framer Motion"],
         category: "Business",
         live: "https://web-site-alum.vercel.app/",
     },
