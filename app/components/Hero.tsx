@@ -112,6 +112,15 @@ const Hero: React.FC = () => {
     }))
   );
 
+
+
+  const socials = [
+    { Icon: Github, link: "https://github.com/IlhamKaddi" },
+    { Icon: Linkedin, link: "https://www.linkedin.com/in/ilhame-kaddi-ab2267244/" },
+ 
+  ];
+
+
   return (
     <div className="relative bg-black overflow-hidden py-8">
       {/* Animated Background Grid */}
@@ -215,7 +224,8 @@ const Hero: React.FC = () => {
               variants={itemVariants}
               className="flex flex-wrap gap-4 items-center mt-4"
             >
-              <motion.button
+              <motion.a
+                href="#contact"
                 className="bg-[#f85c70] hover:bg-[#ff5269] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#f85c70]/50 relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -227,22 +237,25 @@ const Hero: React.FC = () => {
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.5 }}
                 />
-              </motion.button>
+              </motion.a>
 
-              <motion.button
+              <motion.a
+                href="mailto:ilhamkaddi2004@gmail.com"
                 className="border-2 border-white/30 hover:border-[#f85c70] text-white px-6 py-3 rounded-full transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
                 whileHover={{ scale: 1.05, borderColor: "#f85c70" }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Mail className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
 
               {/* Social Icons */}
               <div className="flex gap-3 ml-0 sm:ml-2">
-                {[Github, Linkedin, Code2].map((Icon, index) => (
+                {socials.map(({ Icon, link }, index) => (
                   <motion.a
                     key={index}
-                    href="#"
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-[#f85c70] transition-all backdrop-blur-sm"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.9 }}
@@ -250,6 +263,7 @@ const Hero: React.FC = () => {
                     <Icon className="w-4 h-4" />
                   </motion.a>
                 ))}
+
               </div>
             </motion.div>
           </motion.div>

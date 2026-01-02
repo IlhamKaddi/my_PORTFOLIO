@@ -45,10 +45,10 @@ const Footer: React.FC = () => {
   /* ---------------- SOCIAL LINKS ---------------- */
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: MessageCircle, href: "#", label: "WhatsApp" },
-    { icon: Mail, href: "#", label: "Email" },
+    { icon: Github, href: "https://github.com/IlhamKaddi", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/ilhame-kaddi-ab2267244/", label: "LinkedIn" },
+    { icon: MessageCircle, href: "https://wa.me/212615790034", label: "WhatsApp" },
+    { icon: Mail, href: "mailto:ilhamkaddi2004@gmail.com", label: "Email" },
   ];
 
   return (

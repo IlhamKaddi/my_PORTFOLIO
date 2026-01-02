@@ -9,11 +9,21 @@ export default function Home() {
   return (
     <div >
       <Navbar />
-      <Hero/>
-      <About/>
-      <Skills/>
-      <Projects/>
-      <Contact/>
+       <div id="home">
+        <Hero/>
+      </div>
+      <div id="about">
+        <About/>
+      </div>
+      <div id="skills">
+        <Skills/>
+      </div>
+      <div id="projects">
+        <Projects/>
+      </div>
+      <div id="contact">
+        <Contact/>
+      </div>
       <Footer/>
       
     </div>

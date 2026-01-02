@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const links = ["Home", "Skills", "Experience", "Connect"];
+const links = ["Home", "About", "Skills", "Projects", "Contact"];
 
   return (
     <header className="bg-black">
@@ -35,7 +35,7 @@ export default function Navbar() {
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 className={`
-                  px-16 py-2 text-[16px] rounded-full transition-all
+                  px-14 py-2 text-[16px] rounded-full transition-all
                   ${
                     item === "Home"
                       ? "text-[#f85c70] bg-zinc-900/60"
@@ -49,7 +49,7 @@ export default function Navbar() {
           </nav>
 
           <a
-            href="/CV.pdf"
+            href="/ilhame_kaddi__cv.pdf"
             download="ilhame-kaddi-cv.pdf"
             className="
               flex items-center gap-2
@@ -103,7 +103,7 @@ export default function Navbar() {
             ))}
 
             <a
-            href="/CV.pdf"
+            href="/ilhame_kaddi__cv.pdf"
             download="Ilhame-Kaddi-CV.pdf"
             className="
               mt-2 flex items-center justify-center gap-2
